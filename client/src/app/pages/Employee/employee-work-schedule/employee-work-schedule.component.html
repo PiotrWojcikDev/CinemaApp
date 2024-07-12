@@ -1,0 +1,23 @@
+<app-navbar></app-navbar> 
+<div class="container d-flex flex-column justify-content-center align-items-center mt-5">
+  <h2>Harmonogram</h2>
+  <table class="table border border-2 border-dark shadow rounded overflow-hidden">
+    <thead>
+      <tr>
+        <th scope="col">Godziny</th>
+        <th *ngFor="let day of daysOfTheWeek" scope="col" class="employee ps-2">{{ day }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timeSlot of uniqueTimeSlots" class="align-middle">
+        <th scope="row">{{ timeSlot }}</th>
+        <td *ngFor="let day of daysOfTheWeek">
+          <div *ngFor="let employeeForShift of getEmployeesForShift(day, timeSlot); index as i" class="employee" >
+            <span [ngClass]="{ 'current-user': getEmployeeIdForShift(day, timeSlot, i) == currentLoggedInUserId }">{{ getEmployeesForShift(day, timeSlot)[i] }}</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  

@@ -1,0 +1,12 @@
+<div id="overlay" (click)="reservationService.showReservationDeleteConfirmationModal=false"></div>
+<div id="container">
+    <div id="header">Usuwanie rezerwacji</div>
+    <div id="content">
+        Czy na pewno chcesz usunąć rezerwację {{ reservationObj.user.firstName + " " + reservationObj.user.lastName }}
+        na film <i>{{reservationObj.seance.movie.title}}</i>?
+    </div>
+    <div id="actions">
+        <button (click)="reservationService.showReservationDeleteConfirmationModal=false" class="cancel btn" >Anuluj</button>
+        <button (click)="deleteReservation()" class="btn btn-custom">Usuń</button>
+    </div>
+</div>

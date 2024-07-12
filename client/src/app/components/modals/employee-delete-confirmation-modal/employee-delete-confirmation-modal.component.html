@@ -1,0 +1,11 @@
+<div id="overlay" (click)="employeeService.showEmployeeDeleteConfirmationModal=false"></div>
+<div id="container">
+    <div id="header">Usuwanie pracownika</div>
+    <div id="content">
+        Czy na pewno chcesz usunąć pracownika {{ employeeObj.firstName + " " + employeeObj.lastName }}?
+    </div>
+    <div id="actions">
+        <button (click)="employeeService.showEmployeeDeleteConfirmationModal=false" class="cancel btn" >Anuluj</button>
+        <button (click)="deleteEmployee()" class="btn btn-custom">Usuń</button>
+    </div>
+</div>

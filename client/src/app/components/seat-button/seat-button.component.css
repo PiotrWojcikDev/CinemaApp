@@ -1,0 +1,21 @@
+.btn-custom {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    width: 50px;
+    height: 50px;
+}
+
+.btn-custom:hover {
+    background-color: var(--hovered-primary-color);
+}
+
+
+.selected {
+    background-color: var(--primary-color);
+    border: 6px outset black;
+    color: white;
+    font-weight: 600;
+    width: 50px;
+    height: 50px;
+}

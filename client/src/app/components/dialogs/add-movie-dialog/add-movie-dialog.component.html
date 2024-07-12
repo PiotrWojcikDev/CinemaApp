@@ -1,0 +1,60 @@
+<div id="overlay" (click)="movieService.showAddMovieDialog=false"></div>
+<div id="container">
+    <div id="header">Dodawanie filmu</div>
+    <div id="content">
+        <div class="container-fluid d-flex justify-content-center mt-5">
+                <div class="col-7">
+                    <form [formGroup]="addMovieForm">
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="text" formControlName="title" class="form-control"  placeholder="Tytuł">
+                            <span *ngIf="addMovieForm.controls['title'].errors?.['required'] && (addMovieForm.controls['title'].dirty || addMovieForm.controls['title'].touched)" class="text-danger" >
+                                *Tytuł jest wymagany.
+                            </span>    
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="text" formControlName="yearOfProduction" class="form-control"  placeholder="Rok produkcji">
+                            <span *ngIf="addMovieForm.controls['yearOfProduction'].errors?.['required'] && (addMovieForm.controls['yearOfProduction'].dirty || addMovieForm.controls['yearOfProduction'].touched)" class="text-danger" >
+                                *Rok produkcji jest wymagany.
+                            </span>    
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="text" formControlName="director" class="form-control" placeholder="Reżyser">
+                            <span *ngIf="addMovieForm.controls['director'].errors?.['required'] && (addMovieForm.controls['director'].dirty || addMovieForm.controls['director'].touched)" class="text-danger" >
+                                *Reżyser jest wymagany.
+                            </span>     
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="text" formControlName="description" class="form-control" placeholder="Opis">
+                            <span *ngIf="addMovieForm.controls['description'].errors?.['required'] && (addMovieForm.controls['description'].dirty || addMovieForm.controls['description'].touched)" class="text-danger">
+                                *Opis filmu jest wymagany.
+                            </span>    
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <select required formControlName="movieGenre" class="form-control" placeholder="Gatunek">
+                                <option class="text-danger" value="" disabled selected hidden>Gatunek</option>
+                                <option *ngFor="let movieGenre of movieGenres" [ngValue]="movieGenre">{{ movieGenre }}</option>
+                              </select>
+                            <span *ngIf="addMovieForm.controls['movieGenre'].errors?.['required'] && (addMovieForm.controls['movieGenre'].dirty || addMovieForm.controls['movieGenre'].touched)" class="text-danger" >
+                                *Gatunek jest wymagany.
+                            </span>    
+                        </div>
+                        <div class="input-group custom-file-button">
+                            <label class="input-group-text" for="inputGroupFile">Wybierz zdjęcie</label>
+                            <input (change)="validateExtension($event)" type="file" class="form-control" id="inputGroupFile" name="image">
+                        </div>
+                        <span *ngIf="addMovieForm.controls['image'].errors?.['required'] && (addMovieForm.controls['image'].dirty || addMovieForm.controls['image'].touched)" class="text-danger">
+                            *Zdjęcie jest wymagane.
+                        </span>
+                        <span *ngIf="!isFileExtensionCorrect" class="text-danger">
+                            *Obsługiwane formaty zdjęć: jpg, jpeg, png i svg.
+                        </span>
+                    </form>
+                </div>
+        </div>
+
+    </div>
+    <div id="actions">
+        <button (click)="movieService.showAddMovieDialog=false" class="cancel btn" >Anuluj</button>
+        <button [disabled]="addMovieForm.invalid || !isFileExtensionCorrect" (click)="addMovie()" class="btn btn-custom">Dodaj</button>
+    </div>
+</div>

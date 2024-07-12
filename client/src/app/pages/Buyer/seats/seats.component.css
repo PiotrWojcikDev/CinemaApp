@@ -1,0 +1,32 @@
+.btn-custom {
+    background-color: white;
+    color: var(--primary-color);
+    font-weight: 600;
+    border: 2px solid var(--primary-color);
+    transition: all 0.7s;
+}
+
+.btn-custom:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+}
+
+.div-custom {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: auto;
+    padding: 10px;
+}
+
+.screen {
+    background-color: #ebeaea;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.seat-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 6px;
+}

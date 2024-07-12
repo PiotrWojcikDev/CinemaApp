@@ -1,0 +1,47 @@
+<div id="overlay" (click)="seanceService.showAddSeanceDialog=false"></div>
+<div id="container">
+    <div id="header">Dodawanie seansu</div>
+    <div id="content">
+        <div class="container-fluid d-flex justify-content-center mt-5">
+                <div class="col-7">
+                    <form [formGroup]="addSeanceForm">
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <select required formControlName="movie" class="form-control text-center" placeholder="Film">
+                                <option class="text-danger" value="" disabled selected hidden>Film</option>
+                                <option *ngFor="let movie of allMovies" [value]="movie._id">{{ movie.title + " (" + movie.yearOfProduction + ")" }}</option>
+                            </select>
+                            <span *ngIf="addSeanceForm.controls['movie'].errors?.['required'] && (addSeanceForm.controls['movie'].dirty || addSeanceForm.controls['movie'].touched)" class="text-danger" >
+                                *Film jest wymagany.
+                            </span>    
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="date" formControlName="dateOfSeance" class="form-control text-center" >
+                            <span *ngIf="addSeanceForm.controls['dateOfSeance'].errors?.['required'] && (addSeanceForm.controls['dateOfSeance'].dirty || addSeanceForm.controls['dateOfSeance'].touched)" class="text-danger" >
+                                *Data jest wymagana.
+                            </span>    
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="time" formControlName="time" class="form-control text-center" >
+                            <span *ngIf="addSeanceForm.controls['time'].errors?.['required'] && (addSeanceForm.controls['time'].dirty || addSeanceForm.controls['time'].touched)" class="text-danger" >
+                                *Godzina jest wymagana.
+                            </span>    
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <select required formControlName="room" class="form-control text-center" placeholder="Sala">
+                                <option class="text-danger" value="" disabled selected hidden>Sala</option>
+                                <option *ngFor="let item of [].constructor(6); index as i;" [value]="i+1">Sala {{ i+1 }}</option>
+                            </select>
+                            <span *ngIf="addSeanceForm.controls['room'].errors?.['required'] && (addSeanceForm.controls['room'].dirty || addSeanceForm.controls['room'].touched)" class="text-danger" >
+                                *Sala jest wymagana.
+                            </span>     
+                        </div>
+                    </form>
+                </div>
+        </div>
+
+    </div>
+    <div id="actions">
+        <button (click)="seanceService.showAddSeanceDialog=false" class="cancel btn" >Anuluj</button>
+        <button [disabled]="addSeanceForm.invalid" (click)="addSeance()" class="btn btn-custom">Dodaj</button>
+    </div>
+</div>

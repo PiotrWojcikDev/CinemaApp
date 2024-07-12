@@ -1,0 +1,11 @@
+<div class="d-flex flex-column justify-center align-items-center">
+    <div class="div-info text-center pt-3">
+        <span *ngIf="!showInfo">Miesięczne zestawienie rezerwacji</span>
+        <span *ngIf="showInfo">
+            &nbsp; &nbsp; &nbsp; Do {{ getCurrentYear()-1 }} roku
+        </span>
+    
+        <i class="bi bi-info-circle-fill" (mouseenter)="showInfo=true" (mouseleave)="showInfo=false"></i>
+    </div>
+    <canvas id="lineChart"></canvas>
+</div>

@@ -1,0 +1,28 @@
+<app-navbar></app-navbar> 
+<div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
+  <h2>Harmonogram</h2>
+  <table class="table border border-2 border-dark shadow rounded overflow-hidden">
+    <thead>
+      <tr>
+        <th scope="col">Godziny</th>
+        <th *ngFor="let day of daysOfTheWeek" scope="col">{{ day }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let timeSlot of uniqueTimeSlots" class="align-middle">
+        <th scope="row">{{ timeSlot }}</th>
+        <td *ngFor="let day of daysOfTheWeek">
+          <div *ngFor="let employeeForShift of getEmployeesForShift(day, timeSlot); index as i" class="employee">
+            <span class="employeeData">{{ getEmployeesForShift(day, timeSlot)[i] }}</span>
+            <select name="employees" (change)="onSelect($event, day, timeSlot, getWorkEntryId(day, timeSlot, i), i)">
+              <option selected="true" disabled="disabled">Pracownik</option>   
+              <ng-container *ngFor="let employee of allEmployees">
+                <option *ngIf="employee.lastName!=='Pracownik'" [value]="employee._id">{{ employee.firstName.charAt(0) + '. ' + employee.lastName }}</option>
+              </ng-container> 
+            </select>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,76 @@
+<div id="overlay" (click)="employeeService.showAddEmployeeDialog=false"></div>
+<div id="container">
+    <div id="header">Dodawanie pracownika</div>
+    <div id="content">
+        <div class="container-fluid d-flex justify-content-center mt-5">
+            <!-- <div class="col-5 d-flex flex-column justify-content-center align-items-center div-custom"> -->
+                <div class="col-7">
+                    <form [formGroup]="addEmployeeForm">
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="text" formControlName="firstName" class="form-control"  placeholder="Imię">
+                            <span *ngIf="addEmployeeForm.controls['firstName'].errors?.['required'] && (addEmployeeForm.controls['firstName'].dirty || addEmployeeForm.controls['firstName'].touched)" class="text-danger" >
+                                *Imię jest wymagane.
+                            </span>    
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="text" formControlName="lastName" class="form-control"  placeholder="Nazwisko">
+                            <span *ngIf="addEmployeeForm.controls['lastName'].errors?.['required'] && (addEmployeeForm.controls['lastName'].dirty || addEmployeeForm.controls['lastName'].touched)" class="text-danger" >
+                                *Nazwisko jest wymagane.
+                            </span>    
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="text" formControlName="email" class="form-control" placeholder="Email">
+                            <span *ngIf="addEmployeeForm.controls['email'].errors?.['required'] && (addEmployeeForm.controls['email'].dirty || addEmployeeForm.controls['email'].touched)" class="text-danger" >
+                                *Email jest wymagany.
+                            </span>    
+                            <span *ngIf="addEmployeeForm.controls['email'].errors?.['email']  && addEmployeeForm.controls['email'].touched" class="text-danger">
+                                *Email jest niepoprawny.
+                            </span>  
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="text" formControlName="phoneNumber" class="form-control" placeholder="Telefon">
+                            <span *ngIf="addEmployeeForm.controls['phoneNumber'].errors?.['required'] && (addEmployeeForm.controls['phoneNumber'].dirty || addEmployeeForm.controls['phoneNumber'].touched)" class="text-danger">
+                                *Numer telefonu jest wymagany.
+                            </span>    
+                            <span *ngIf="addEmployeeForm.controls['phoneNumber'].errors?.['pattern']  && addEmployeeForm.controls['phoneNumber'].touched" class="text-danger">
+                                *Numer telefonu jest niepoprawny.
+                            </span>  
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <select required formControlName="salary" class="form-control" placeholder="Pensja">
+                                <option class="text-danger" value="" disabled selected hidden>Pensja</option>
+                                <option *ngFor="let item of [].constructor(21); index as i;" value="{{ 2000 + i * 100 }}">{{ 2000 + i * 100 }}</option>
+                              </select>
+                            <span *ngIf="addEmployeeForm.controls['salary'].errors?.['required'] && (addEmployeeForm.controls['salary'].dirty || addEmployeeForm.controls['salary'].touched)" class="text-danger" >
+                                *Pensja jest wymagana.
+                            </span>    
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="password" formControlName="password" class="form-control" placeholder="Hasło">
+                            <span *ngIf="addEmployeeForm.controls['password'].errors?.['required'] && (addEmployeeForm.controls['password'].dirty || addEmployeeForm.controls['password'].touched)" class="text-danger" >
+                                *Hasło jest wymagane.
+                            </span>    
+                            <span *ngIf="addEmployeeForm.controls['password'].errors?.['pattern'] && addEmployeeForm.controls['password'].touched" class="text-danger" >
+                                *Hasło musi zawierać przynajmniej: 8 znaków, wielkie i małe litery, cyfrę oraz znak specjalny.
+                            </span> 
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Potwierdź hasło">
+                            <span *ngIf="addEmployeeForm.controls['confirmPassword'].errors?.['required'] && (addEmployeeForm.controls['confirmPassword'].dirty || addEmployeeForm.controls['confirmPassword'].touched)" class="text-danger">
+                                *Potwierdzenie hasła jest wymagane.
+                            </span>    
+                            <span *ngIf="addEmployeeForm.controls['confirmPassword'].errors?.['passwordsNotMatch'] && addEmployeeForm.controls['confirmPassword'].touched" class="text-danger">
+                                *Hasła nie są jednakowe.
+                            </span>   
+                        </div>
+                    </form>
+                </div>
+            <!-- </div>    -->
+        </div>
+
+    </div>
+    <div id="actions">
+        <button (click)="employeeService.showAddEmployeeDialog=false" class="cancel btn" >Anuluj</button>
+        <button [disabled]="addEmployeeForm.invalid" (click)="addEmployee()" class="btn btn-custom">Dodaj</button>
+    </div>
+</div>

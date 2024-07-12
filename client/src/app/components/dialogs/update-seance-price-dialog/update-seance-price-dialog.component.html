@@ -1,0 +1,35 @@
+<div id="overlay" (click)="seanceService.showUpdateSeancePriceDialog=false"></div>
+<div id="container">
+    <div id="header">Zmiana ceny seansu</div>
+    <div id="content">
+        <div class="container-fluid d-flex justify-content-center mt-5">
+                <div class="col-7">
+                    <form [formGroup]="updateSeanceForm">
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input disabled type="text" class="form-control text-center" value="{{ seanceObj.movie.title }}">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input disabled type="text" class="form-control text-center"  value="{{ formatDate(seanceObj.dateOfSeance) }}">  
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input disabled type="text" class="form-control text-center" value="Sala {{ seanceObj.room }}">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <select formControlName="price" class="text-center form-control" placeholder="Cena">
+                                <option class="text-danger" value="" disabled selected hidden>Cena</option>
+                                <option *ngFor="let item of [].constructor(31); index as i;" value="{{ 15 + i * 0.5 }}">{{ (15 + i * 0.5).toFixed(2) }}</option>
+                              </select>
+                            <span *ngIf="updateSeanceForm.controls['price'].errors?.['required'] && (updateSeanceForm.controls['price'].dirty || updateSeanceForm.controls['price'].touched)" class="text-danger" >
+                                *Cena jest wymagana.
+                            </span>    
+                        </div>
+                    </form>
+                </div>
+        </div>
+
+    </div>
+    <div id="actions">
+        <button (click)="seanceService.showUpdateSeancePriceDialog=false" class="cancel btn" >Anuluj</button>
+        <button (click)="updateSeancePrice()" [disabled]="updateSeanceForm.invalid" class="btn btn-custom">Zmień</button>
+    </div>
+</div>

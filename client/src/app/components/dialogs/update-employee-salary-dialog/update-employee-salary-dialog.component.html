@@ -1,0 +1,38 @@
+<div id="overlay" (click)="employeeService.showAddEmployeeDialog=false"></div>
+<div id="container">
+    <div id="header">Zmiana pensji pracownika</div>
+    <div id="content">
+        <div class="container-fluid d-flex justify-content-center mt-5">
+                <div class="col-7">
+                    <form [formGroup]="addEmployeeForm">
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input disabled type="text" class="form-control" value="{{ employeeObj.firstName }}">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input disabled type="text" class="form-control"  value="{{ employeeObj.lastName }}">  
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input disabled type="text" class="form-control" value="{{ employeeObj.email }}">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <input disabled type="text" class="form-control" value="{{ employeeObj.phoneNumber }}">
+                        </div>
+                        <div class="d-flex flex-column justify-content-center mb-3">
+                            <select required formControlName="salary" class="form-control" placeholder="Pensja">
+                                <option class="text-danger" value="" disabled selected hidden>Pensja</option>
+                                <option *ngFor="let item of [].constructor(21); index as i;" value="{{ 2000 + i * 100 }}">{{ 2000 + i * 100 }}</option>
+                              </select>
+                            <span *ngIf="addEmployeeForm.controls['salary'].errors?.['required'] && (addEmployeeForm.controls['salary'].dirty || addEmployeeForm.controls['salary'].touched)" class="text-danger" >
+                                *Pensja jest wymagana.
+                            </span>    
+                        </div>
+                    </form>
+                </div>
+        </div>
+
+    </div>
+    <div id="actions">
+        <button (click)="employeeService.showUpdateEmployeeSalaryDialog=false" class="cancel btn" >Anuluj</button>
+        <button [disabled]="addEmployeeForm.invalid" (click)="changeSalary()" class="btn btn-custom">Zmień</button>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<app-navbar></app-navbar>
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5 flex-nowrap">
+    <div class="d-flex flex-column justify-content-center align-items-center div-custom px-4">
+        <h3 class="mb-2">Wybór miejsca</h3>
+        <div class="d-flex justify-content-center border border-3 fw-bolder screen mb-2">Ekran</div>
+        <div class="seat-grid mb-2">
+            <ng-container *ngFor="let item of [].constructor(25); index as i;">
+                <app-seat-button (sendSelectedSeat)="receiveSelectedSeat($event)" [disabled]="reservedSeats.includes(i+1)" [seatNumber]="i+1" [isSelected]="selectedSeat === (i + 1)"></app-seat-button>
+            </ng-container>
+        </div>
+        <button (click)="onSubmit()" [disabled]="!selectedSeat" class="btn btn-custom px-4 py-2">Dalej</button>
+    </div>
+</div>

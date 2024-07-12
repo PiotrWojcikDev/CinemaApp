@@ -1,0 +1,49 @@
+<app-navbar></app-navbar>
+<div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
+    <h2>Seanse</h2>
+    <button *ngIf="userRole === 'Employee'" (click)="seanceService.showAddSeanceDialog=true" class="btn-custom custom-size basic-background mb-2">+</button>
+    <table class="table border border-2 border-dark shadow rounded overflow-hidden">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">
+                    Film
+                    <a (click)="changeSortColumn('movie')">
+                        <i class="bi bi-caret-up-fill"></i>
+                        <i class="bi bi-caret-down-fill"></i>
+                    </a>
+                </th>
+                <th scope="col">
+                    Data seansu
+                    <a (click)="changeSortColumn('date')">
+                        <i class="bi bi-caret-up-fill"></i>
+                        <i class="bi bi-caret-down-fill"></i>
+                    </a>
+                </th>
+                <th scope="col">
+                    Sala
+                    <a (click)="changeSortColumn('room')">
+                        <i class="bi bi-caret-up-fill"></i>
+                        <i class="bi bi-caret-down-fill"></i>
+                    </a>
+                </th>
+                <th scope="col">Cena (PLN)</th>
+                <th *ngIf="userRole === 'Owner'" scope="col">Akcja</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let seance of allSeances; index as i;" class="align-middle">
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{ seance.movie.title + " (" + seance.movie.yearOfProduction + ")" }}</td>
+                <td>{{ formatDate(seance.dateOfSeance) }}</td>
+                <td>{{ seance.room }}</td>
+                <td>{{ seance.price.toFixed(2)}}</td>
+                <td *ngIf="userRole === 'Owner'">
+                    <button (click)="updateSeancePrice(seance)" class="btn btn-custom me-2"><i class="bi bi-pencil"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-add-seance-dialog *ngIf="seanceService.showAddSeanceDialog"></app-add-seance-dialog>
+<app-update-seance-price-dialog *ngIf="seanceService.showUpdateSeancePriceDialog" [seanceObj]="seanceToUpdate"></app-update-seance-price-dialog>

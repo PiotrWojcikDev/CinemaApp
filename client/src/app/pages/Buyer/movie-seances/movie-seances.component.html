@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<div class="container-fluid d-flex flex-column justify-content-center align-items-center mt-5">
+    <div class="col-4 d-flex flex-column justify-content-center align-items-center div-custom p-2">
+        <h3>Seanse</h3>
+        <h4 *ngIf="movie">Film: <i>{{ this.movie.title }} ({{ this.movie.yearOfProduction }})</i></h4>
+        <select (change)="onSelectSeance($event)" class="form-select text-center mt-2">
+            <option *ngIf="movieSeances.length" selected="true" disabled="disabled">---Wybierz seans---</option>    
+            <option *ngIf="!movieSeances.length" selected="true" disabled="disabled">---Brak dostępnych seansów---</option>    
+            <option *ngFor="let seance of movieSeances" [value]="seance._id">{{formatDate(seance.dateOfSeance)}}</option>
+        </select>
+    
+        <div class="d-flex justify-content-center mt-2">
+            <div class="me-2">
+                <input type="radio" id="normal" name="typeOfReservation" (change)="selectedTypeOfReservation = 0"checked />
+                <label for="normal">Normalny</label>
+            </div>
+            <div>
+                <input type="radio" id="concession" name="typeOfReservation" (change)="selectedTypeOfReservation = 1" />
+                <label for="concession">Ulgowy</label>
+            </div>
+        </div>
+        <span *ngIf="seance" class="mt-2">Cena: {{ getFinalPrice(seance.price) }}</span>
+    
+        <button [disabled]="!seanceId" (click)="onSubmit(+getFinalPrice(seance.price))" class="btn btn-custom px-4 py-2 mt-2">Dalej</button>
+    </div>
+    
+</div>

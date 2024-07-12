@@ -1,0 +1,30 @@
+<app-navbar></app-navbar>
+<div class="d-flex flex-column justify-content-center align-items-center mb-5">
+    <h2 class="my-2">Filmy</h2>
+    <button *ngIf="userRole === 'Employee'" (click)="movieService.showAddMovieDialog = true" class="btn-custom custom-size basic-background">+</button>
+    <div class="col-3"></div>
+    <div *ngFor="let movie of allMovies" class="col-6 d-flex justify-content-center border border-1 border-dark rounded bg-custom m-3 shadow">
+        <div class="col-4 d-flex justify-content-center align-items-center border-3 border-success overflow-hidden">
+            <img id="image" class="m-2 rounded" [src]="movie.image" alt="Zdjęcie filmu">
+        </div>
+        <div class="col-4 d-flex flex-column justify-content-between align-items-center">
+            <div class="row">
+                <h5> {{ movie.title }} </h5>
+            </div>
+            <div class="row">
+                <span class="span-custom px-3">
+                    {{ movie.description }}
+                </span>
+            </div>
+            <div class="row d-flex justify-content-center align-items-center">
+                <button routerLink="/movies/{{movie._id}}/seances" class="btn btn-custom m-4">Zobacz seanse</button>
+            </div>
+        </div>
+        <div class="col-4 d-flex flex-column justify-content-center align-items-center">
+            <h6>Reżyser</h6>
+            <span>{{ movie.director }}</span>
+        </div>
+    </div>
+    <div class="col-3"></div>
+</div>
+<app-add-movie-dialog *ngIf="movieService.showAddMovieDialog === true"></app-add-movie-dialog>

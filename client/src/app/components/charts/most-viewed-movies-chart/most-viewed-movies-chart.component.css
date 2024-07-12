@@ -1,0 +1,22 @@
+i {
+    font-size: 18px;
+    color: #32a852;
+    flex: 1;
+}
+
+.info-text {
+    color: white;
+    font-size: 16px;
+}
+
+.div-info {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+span {
+    flex: 9;
+    font-weight: 600;
+}

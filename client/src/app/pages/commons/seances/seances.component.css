@@ -1,0 +1,20 @@
+th {
+    position: relative;
+}
+
+a i {
+    position: absolute;
+    font-size: 12px;
+}
+
+a i:hover {
+    cursor: pointer;
+}
+
+a i:first-child {
+    margin-top: 0px;
+}
+
+a i:not(:first-child) {
+    margin-top: 8px;
+}

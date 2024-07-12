@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+
+<div class="d-flex flex-column justify-content-center align-items-center mt-5">
+    <div class="d-flex flex-column justify-content-center div-custom p-2">
+        <h3 class="text-center">Statystyki</h3>
+        <div class="d-flex flex-row justify-content-center align-items-center">
+            <div (click)="prevButtonAction()" class="carousel-button prev">
+                <i class="bi bi-caret-left"></i>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <app-most-viewed-movies-chart></app-most-viewed-movies-chart>
+                    <app-most-viewed-genres-chart></app-most-viewed-genres-chart>
+                    <app-monthly-reservations-summary-chart></app-monthly-reservations-summary-chart>
+                </div>
+            </div>
+            <div (click)="nextButtonAction()" class="carousel-button next">
+                <i class="bi bi-caret-right"></i>
+            </div>
+        </div>
+    </div>
+        
+</div>
+
+

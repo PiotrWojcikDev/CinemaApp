@@ -1,0 +1,7 @@
+.bg-purple {
+    background-color: var(--primary-color);
+}
+
+.nav-link {
+    text-wrap: nowrap;
+}

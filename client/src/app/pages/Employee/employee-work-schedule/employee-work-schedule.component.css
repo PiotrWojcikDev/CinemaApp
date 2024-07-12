@@ -1,0 +1,7 @@
+.current-user {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 2px 6px;
+}

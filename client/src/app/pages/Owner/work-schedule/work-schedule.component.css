@@ -1,0 +1,23 @@
+select {
+    display: none;
+    width: 100%;
+}
+  
+.employee:hover select {
+    display: block;
+}
+
+.employee:hover .employeeData {
+    display: none;
+}
+  
+td {
+    transition: all 1s;
+    width: calc(100%/7);
+}
+
+td:hover {
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 10px;
+}

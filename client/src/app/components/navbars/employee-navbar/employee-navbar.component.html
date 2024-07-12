@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg p-3 navbar-dark basic-background-color shadow">
+    <div>
+      <a class="navbar-brand" href="#" class="m-auto">
+        <img src="../../../assets/logo.png" width="200" height="50" class="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a routerLink="/movies" routerLinkActive="active" class="nav-link fs-5">Filmy</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/reservations" routerLinkActive="active" class="nav-link fs-5">Rezerwacje</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/seances" routerLinkActive="active" class="nav-link fs-5">Seanse</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/employeeSchedule" routerLinkActive="active" class="nav-link fs-5">Grafik</a>
+        </li>
+        <li class="nav-item">
+          <a (click)="logout()" routerLink="/login" routerLinkActive="active" class="nav-link fs-5">Wyloguj się</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

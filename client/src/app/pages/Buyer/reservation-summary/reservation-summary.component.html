@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-4 d-flex flex-column justify-content-center align-items-center div-custom">
+        <h3 class="w-100 border-bottom-custom text-center p-1">Podsumowanie rezerwacji</h3>
+        <div class="w-100 d-flex flex-row justify-content-center border-bottom-custom pb-2">
+            <div class="d-flex flex-column justify-content-center me-1 ">
+                <span class="fw-bold">Imię i nazwisko:</span>
+                <span class="fw-bold">Typ rezerwacji:</span>
+                <span class="fw-bold">Film:</span>
+                <span class="fw-bold">Sala:</span>
+                <span class="fw-bold">Miejsce:</span>
+                <span class="fw-bold">Cena:</span>
+            </div>
+            <div class="d-flex flex-column justify-content-center">
+                <span>{{ reservation.user.firstName + " " + reservation.user.lastName}}</span>
+                <span>{{ reservation.type }}</span>
+                <span>{{ reservation.movie?.title }}</span>
+                <span>{{ reservation.seance.room}}</span>
+                <span>{{ reservation.seatNumber}}</span>
+                <span>{{ reservation.finalPrice.toFixed(2) + " PLN" }}</span>
+            </div>
+        </div>
+        <button (click)="addReservation()" class="btn btn-custom px-4 py-2 m-2">Zatwierdź</button>
+    </div>
+</div>
+

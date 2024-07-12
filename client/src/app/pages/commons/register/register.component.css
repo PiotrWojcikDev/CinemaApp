@@ -1,0 +1,19 @@
+body {
+    height: 10px;
+}
+#alert {
+    opacity: 0;
+}
+
+.animation {
+    animation-name: alert-animation;
+    animation-duration: 7s;
+}
+
+@keyframes alert-animation {
+    0%   {opacity: 0;}
+    25%  {opacity: 0.5;}
+    50%  {opacity: 1;}
+    75%  {opacity: 0.5;}
+    100% {opacity: 0;}
+}

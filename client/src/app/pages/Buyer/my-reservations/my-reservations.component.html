@@ -1,0 +1,43 @@
+<ngx-spinner bdColor="rgba(0,0,0,0.7)" 
+size = "large" color="#32a852" 
+type="ball-spin" [fullScreen]="true">
+    <p style="color: white" > Ładowanie... </p>
+</ngx-spinner>
+<app-navbar></app-navbar>
+<div class="container d-flex flex-column justify-content-center align-items-center mt-5 mb-5">
+    <ng-container *ngIf="!allUserReservations.length">
+        <div class="container d-flex flex-column justify-content-center align-items-center mt-5 pt-5">
+            <div class="message">Brak rezerwacji</div>
+            <p>Wygląda na to, że nie dokonałeś jeszcze żadnych rezerwacji. Wróć na <a routerLink="/movies">stronę główną</a>.</p>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="allUserReservations.length">
+        <h2>Moje rezerwacje</h2>
+        <table class="table border border-2 border-dark shadow rounded overflow-hidden">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Imię</th>
+                <th scope="col">Nazwisko</th>
+                <th scope="col">Bilet</th>
+                <th scope="col">Cena (PLN)</th>
+                <th scope="col">Nr siedzenia</th>
+                <th scope="col">Film</th>
+                <th scope="col">Data seansu</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reservation of allUserReservations; index as i" class="align-middle">
+                <th scope="row"> {{ i+1 }} </th>
+                <td>{{ reservation.user.firstName }} </td>
+                <td>{{ reservation.user.lastName}}</td>
+                <td>{{ reservation.type }}</td>
+                <td>{{ reservation.finalPrice.toFixed(2) }}</td>
+                <td>{{ reservation.seatNumber }}</td>
+                <td>{{ reservation.seance.movie.title }}</td>
+                <td>{{ formatDate(reservation.seance.dateOfSeance) }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </ng-container>
+</div>

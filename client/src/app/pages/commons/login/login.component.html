@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<div class="container-fluid d-flex justify-content-center align-items-center flex-column mt-5 ">
+    <div class="col-4 d-flex flex-column justify-content-center align-items-center div-custom mt-5">
+        <h2 class="my-2">Logowanie</h2>
+        <div class="col-8">
+            <form [formGroup]="loginForm">
+                
+                <div class="d-flex flex-column justify-content-center mb-3">
+                    <input type="text" formControlName="email" class="form-control" placeholder="Email">
+                    <span *ngIf="loginForm.controls['email'].errors?.['required'] && (loginForm.controls['email'].dirty || loginForm.controls['email'].touched)" class="text-danger" >
+                        *Email jest wymagany.
+                    </span>    
+                    <span *ngIf="loginForm.controls['email'].errors?.['email']  && loginForm.controls['email'].touched" class="text-danger">
+                        *Email jest niepoprawny.
+                    </span>  
+                </div>
+                <div class="d-flex flex-column justify-content-center mb-3">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Hasło">
+                    <span *ngIf="loginForm.controls['password'].errors?.['required'] && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)" class="text-danger" >
+                        *Hasło jest wymagane.
+                    </span>    
+                </div>
+                
+                <div class="d-flex flex-column justify-content-center">
+                    <button (click)="login()" [disabled]="loginForm.invalid" type="button" class="btn btn-custom">Zaloguj się</button>
+                    <div class="d-flex justify-content-between my-3">
+                        <a routerLink="/forgotPassword" class="text-decoration-none" href="">Nie pamiętasz hasła?</a><a routerLink="/register" class="text-decoration-none" href="">Zarejestruj się</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>   
+</div>

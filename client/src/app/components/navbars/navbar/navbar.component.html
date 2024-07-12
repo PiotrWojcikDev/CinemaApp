@@ -1,0 +1,4 @@
+<app-basic-navbar *ngIf="currentLoggedInUserType !== 'Buyer' && currentLoggedInUserType !== 'Employee' && currentLoggedInUserType !== 'Owner'"></app-basic-navbar>
+<app-buyer-navbar *ngIf="currentLoggedInUserType === 'Buyer'"></app-buyer-navbar>
+<app-employee-navbar *ngIf="currentLoggedInUserType === 'Employee'"></app-employee-navbar>
+<app-owner-navbar *ngIf="currentLoggedInUserType === 'Owner'"></app-owner-navbar>

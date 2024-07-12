@@ -1,0 +1,83 @@
+/* :root {
+    --primary-color: #7b42f5;
+    --hovered-primary-color: #9d79e9;
+} */
+
+:root {
+    --primary-color: #32a852;
+    --hovered-primary-color: #116929;
+}
+
+/* :root {
+    --primary-color: #ff9721;
+    --hovered-primary-color: #d16f00;
+}  */
+
+
+/* :root {
+    --primary-color: #5CDB95;
+    --hovered-primary-color: #8EE4AF;
+} */
+
+/* :root {
+    --primary-color: #240090;
+    --hovered-primary-color: #3500D3;
+} */
+
+
+::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--hovered-primary-color);
+    border-radius: 5px;
+}
+
+.logo {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+  
+.logo:hover {
+    transform: scale(1.1); 
+    opacity: 0.7; 
+}
+
+.custom-size {
+    width: 64px; 
+    height: 64px; 
+    font-size: 32px; 
+    border: none;
+    border-radius: 50%;
+    padding-bottom: 6px;
+}
+
+.basic-background-color {
+    background-color: var(--primary-color);
+}
+
+.btn-custom {
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}
+
+.btn-custom:hover {
+    background-color: var(--hovered-primary-color);
+}
+
+.div-custom {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.form-control:focus {
+    border-color: var(--hovered-primary-color);
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.075), 0 0 8px var(--primary-color);
+}
+

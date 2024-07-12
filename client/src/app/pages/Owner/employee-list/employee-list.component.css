@@ -1,0 +1,13 @@
+.custom-size {
+    width: 64px; 
+    height: 64px; 
+    font-size: 32px; 
+    border: none;
+    border-radius: 50%;
+    padding-bottom: 6px;
+}
+
+.center {
+    margin: 200px;
+}
+

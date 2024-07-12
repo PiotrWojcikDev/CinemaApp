@@ -1,0 +1,11 @@
+<div class="d-flex flex-column justify-center align-items-center">
+    
+  <div class="div-info text-center pt-3">
+    <span *ngIf="!showInfo">Top 5 najpopularniejszych filmów </span>
+    <span *ngIf="showInfo">Od {{ formatDate(globalMinDate) }} do {{ formatDate(globalMaxDate) }}</span>
+
+    <i class="bi bi-info-circle-fill" (mouseenter)="showInfo=true" (mouseleave)="showInfo=false"></i>
+  </div>
+  
+  <canvas id="barChart"></canvas>
+</div>

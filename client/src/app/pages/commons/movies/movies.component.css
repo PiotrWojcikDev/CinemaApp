@@ -1,0 +1,51 @@
+.bg-custom {
+    background-color: #ebeaea;
+}
+
+div {
+    box-sizing: border-box;
+}
+
+img {
+    width: 90%;
+    height: 90%;
+}
+
+.span-custom {
+    overflow: auto;
+    max-height: 150px; 
+}
+  
+.span-custom:hover::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.span-custom::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.span-custom::-webkit-scrollbar-thumb {
+    background: var(--hovered-primary-color);
+    border-radius: 5px;
+}
+
+.span-custom::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.span-custom:not(:hover)::-webkit-scrollbar {
+    display: none;
+}
+
+.last {
+    background-color: red;
+}
+
+img {
+    transition: all 1s;
+}
+
+img:hover {
+    scale: 1.2;
+}

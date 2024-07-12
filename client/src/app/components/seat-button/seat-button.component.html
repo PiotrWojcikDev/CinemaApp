@@ -1,0 +1,3 @@
+<button [ngClass]="{'selected': isSelected, 'btn-custom': !isSelected}" (click)="selectSeat()" [disabled]="disabled" class="btn btn-custom">
+    {{ seatNumber }}
+</button>
